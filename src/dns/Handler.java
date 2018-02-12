@@ -33,11 +33,11 @@ public class Handler
 			
 			while ( (numBytes = fromClient.read(buffer)) != -1) 
 			{
-				String full = new String(buffer);
-				System.out.println(full);
-				int lengthEnd = full.indexOf(" ");
-				int length = Integer.parseInt(full.substring(0, lengthEnd));
-				String hostName = full.substring(lengthEnd + 1, length + lengthEnd + 1);
+				String hostName = new String(buffer).trim();
+				System.out.println(hostName);
+//				int lengthEnd = full.indexOf(" ");
+//				int length = Integer.parseInt(full.substring(0, lengthEnd));
+//				String hostName = full.substring(lengthEnd + 1, length + lengthEnd + 1);
 				
 				System.out.println(hostName);
 				byte[] hostAddressBytes = null;
@@ -55,10 +55,9 @@ public class Handler
 				}
 				finally
 				{
-					length = hostAddressBytes.length;
+					int length = hostAddressBytes.length;
 					toClient.write(hostAddressBytes, 0, length);
 					toClient.flush();	
-					System.out.println("reached finally");
 				}
 			}	
    		}

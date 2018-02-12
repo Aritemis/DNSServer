@@ -32,14 +32,14 @@ public class Client
 			while (!done) 
 			{
 				String line = localBin.readLine();
-				if (line.equals("quit"))
+				if (line.equals("exit"))
 				{
 					done = true;
 				}
 				else 
 				{
-					int length = line.length();
-					networkOutput.println(length + " " + line);
+//					int length = line.length();
+					networkOutput.println(line);
 					System.out.println(networkBin.readLine());
 					System.out.println("Enter another name to resolve or type 'exit' to quit.");
 				}
